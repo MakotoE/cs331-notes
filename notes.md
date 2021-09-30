@@ -52,8 +52,10 @@
 # History of databases
 - Hierarchical and network model
   - IMS system
+  - Procedural language
 - Relational model
   - Based on mathematical models to abstract the storage details
+  - Declarative
 - Object-oriented
   - Not common today
 - NOSQL
@@ -62,3 +64,56 @@
 # When not to use a DBMS
 - Overhead costs such as for maintenance and training
 - Real-time or embedded applications
+
+# Data models
+- Conceptual
+  - Concepts are similar to how humans think
+- Physical
+  - Describe how data is to be stored on a medium
+- Implementation
+  - Concepts that are between physical and conceptual, such as relational data models
+- Self-describing
+  - Includes meta-data with the data, such as in NOSQL
+
+# Schemas and state
+- Schema: Description of a database, can be represented with a schema diagram
+- Database state: Data stored at a moment in time, aka snapshot
+- States correspond to specific schemas
+
+# Three-schema architecture
+- Internal schema: Physical level
+- Conceptual schema: Structures and contraints of the whole database
+- External schema: User views that expose only the data that a user is interested in
+
+# Data independence
+- Logical data independenece: Allows changes to conceptual schema without having to change external schema
+- Physical data independence: Allows changes to internal schema without changing the conceptual schema
+
+# Types of DBMS languages
+- Data definition language (DDL)
+  - Creates and modifies database objects
+  - Specifies the conceptual schema, and some DDLs define internal and external schema
+- Data manipulation language (DML)
+  - Specifies ACID operations
+  - High level: Set oriented and declarative
+  - Low level: Procedural
+
+# 2-tier client-server architecture
+- Client
+  - Interface for the DBMS
+  - Connected to servers through a network
+- Server
+  - Houses the database
+  - Processes queries and transactions
+
+# 3-tier client-server architecture
+- Common for web apps
+- Between the client and server is an application layer
+  - Stores the connectivity software and businesss logic
+  - Acts as a security barrier
+
+# Distributed DBMS
+- Data is stored at multiple sites
+- Homogenous DDBMS: Uses the same DBMS software at all sites
+- Heterogenous DDBMS: Uses different DBMS software at sites
+- Federated DBMS: Different and autonomous DBMSs connected by a middleware
