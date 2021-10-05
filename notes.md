@@ -115,5 +115,25 @@
 # Distributed DBMS
 - Data is stored at multiple sites
 - Homogenous DDBMS: Uses the same DBMS software at all sites
-- Heterogenous DDBMS: Uses different DBMS software at sites
+- Heterogeneous DDBMS: Uses different DBMS software at sites
 - Federated DBMS: Different and autonomous DBMSs connected by a middleware
+
+# Relational data model
+- Table = Relation
+- Column name = Attribute
+- Set of all possible column values = Domain
+- Row = Tuple
+- Table definition = Relation schema
+- Table state = Relation state
+
+# Constraints
+- Inherent/implicit constraint: Based on the data model/type
+- Schema-based/explicit constraint: Expressed in the schema
+  - Entity integrity constraint: No primary key value can be null.
+  - Referential integrity constraint: A reference must point to an existing tuple
+- Application-based/semantic constraint: Enforced by application programs
+
+# Key
+- A key has two properties:
+  - Two unequal tuples cannot be associated with an equal key set (It is a superkey)
+  - It is not possible to remove any attribute in the key set without losing the first property (It is a minimal superkey) 
