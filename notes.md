@@ -136,4 +136,15 @@
 # Key
 - A key has two properties:
   - Two unequal tuples cannot be associated with an equal key set (It is a superkey)
-  - It is not possible to remove any attribute in the key set without losing the first property (It is a minimal superkey) 
+  - It is not possible to remove any attribute in the key set without losing the first property (It is a minimal superkey)
+
+# Entity relationship diagram
+- Shapes
+  - Rectangle - Entity
+  - Double rectangle - Weak entity (Cannot be identified by its attributes alone)
+  - Oval - Attribute
+  - Double oval - Multivalued attribute
+  - Diamond - Relationship (Connects two strong entities)
+  - Double diamond - Identifying relationship (Connects a weak entity)
+  - Line - Partial participation (Not all entities are involved in the relationship)
+  - Double line - Total participation (All entities are involved in the relationship)
