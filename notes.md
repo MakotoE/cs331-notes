@@ -140,11 +140,33 @@
 
 # Entity relationship diagram
 - Shapes
-  - Rectangle - Entity
-  - Double rectangle - Weak entity (Cannot be identified by its attributes alone)
-  - Oval - Attribute
-  - Double oval - Multivalued attribute
-  - Diamond - Relationship (Connects two strong entities)
-  - Double diamond - Identifying relationship (Connects a weak entity)
-  - Line - Partial participation (Not all entities are involved in the relationship)
-  - Double line - Total participation (All entities are involved in the relationship)
+  - Rectangle = Entity
+  - Double rectangle = Weak entity (Cannot be identified by its attributes alone)
+  - Oval = Attribute
+  - Double oval = Multivalued attribute
+  - Diamond = Relationship (Connects two strong entities)
+  - Double diamond = Identifying relationship (Connects a weak entity)
+  - Line = Partial participation (Not all entities are involved in the relationship)
+  - Double line = Total participation (All entities are involved in the relationship)
+
+# Enhanced Entity-Relationship Modeling
+- A subclass is denoted with a line originating from the superclass, passing through a circled "d" or "o", depending on the constraint, and connecting to the subclass. There is a symbol "U" on the line pointing toward the subclass.
+- A local attribute, which is an attribute for only the subclass, may be connected to the subclass
+- Specialization constraint
+  - Disjoint constraint
+    - An entity can only be a member of one subclass only for a given specialization
+    - Uses a "d" symbol
+  - Overlapping constraint
+    - An entity may be a member of one or more subclasses in a specialization
+    - Uses a "o" symbol
+  - Total constraint
+    - Every entity in the superclass must be a member of a subclass
+    - Denoted by a double line
+  - Partial constraint
+    - An entity may or may not belong to a subclass
+    - Denoted by a single line
+- Specialization: The process of defining a set of subclasses of a superclass
+- Generalization: The process of combining several classes with a common superclass
+- Hierarchy: A subclass only has one superclass
+- Lattice: A subclass can have one or more superclasses
+- Union type: A class that can represent different subclasses (Just like C unions)
