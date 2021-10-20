@@ -149,6 +149,15 @@
 - Double line = Total participation (All entities are involved in the relationship)
 - A line that passes through a circle, with a "U" on the line = Specialization
 
+# Crow's foot notation
+- Symbols
+  - O = Zero
+  - | = One
+  - < = Many
+- Order of symbols
+  - The symbol closest to the origin indicates multiplicity, or the maximum number in the relationship
+  - The second symbol is the cardinality, or the minimum number in the relationship
+
 # Enhanced Entity-Relationship Modeling
 - A local attribute, which is an attribute for only the subclass, may be connected to the subclass
 - Specialization constraint
