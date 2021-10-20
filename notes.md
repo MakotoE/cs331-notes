@@ -139,23 +139,22 @@
   - It is not possible to remove any attribute in the key set without losing the first property (It is a minimal superkey)
 
 # Entity relationship diagram
-- Shapes
-  - Rectangle = Entity
-  - Double rectangle = Weak entity (Cannot be identified by its attributes alone)
-  - Oval = Attribute
-  - Double oval = Multivalued attribute
-  - Diamond = Relationship (Connects two strong entities)
-  - Double diamond = Identifying relationship (Connects a weak entity)
-  - Line = Partial participation (Not all entities are involved in the relationship)
-  - Double line = Total participation (All entities are involved in the relationship)
+- Rectangle = Entity
+- Double rectangle = Weak entity (Cannot be identified by its attributes alone)
+- Oval = Attribute
+- Double oval = Multivalued attribute
+- Diamond = Relationship (Connects two strong entities)
+- Double diamond = Identifying relationship (Connects a weak entity)
+- Line = Partial participation (Not all entities are involved in the relationship)
+- Double line = Total participation (All entities are involved in the relationship)
+- A line that passes through a circle, with a "U" on the line = Specialization
 
 # Enhanced Entity-Relationship Modeling
-- A subclass is denoted with a line originating from the superclass, passing through a circled "d" or "o", depending on the constraint, and connecting to the subclass. There is a symbol "U" on the line pointing toward the subclass.
 - A local attribute, which is an attribute for only the subclass, may be connected to the subclass
 - Specialization constraint
   - Disjoint constraint
     - An entity can only be a member of one subclass only for a given specialization
-    - Uses a "d" symbol
+    - Has a "d" symbol in the circle
   - Overlapping constraint
     - An entity may be a member of one or more subclasses in a specialization
     - Uses a "o" symbol
@@ -169,4 +168,22 @@
 - Generalization: The process of combining several classes with a common superclass
 - Hierarchy: A subclass only has one superclass
 - Lattice: A subclass can have one or more superclasses
-- Union type: A class that can represent different subclasses (Just like C unions)
+- Union type: A class that can represent different subclasses. Just like C unions. Uses the "u" symbol.
+
+# Mapping extended relations
+- Regular entity: Create a record that include all attributes and choose an attribute as the primary key
+- Weak entity: Create a record R for the entity and add a foreign key that links to the owner entity. The primary key of R is the combination of the foreign key and partial key of R.
+- Binary 1:1 relation types
+  - Use a foreign key
+  - Merge the entities into a record
+  - Create a third record to link the two entities
+- 1:N relation types: Use a foreign key in the N-side of the relationship that links to the single primary key
+- M:N relationship type: For each relationship R, create a new record S to represent R. S contains the foreign keys of both entities participating in the relationship.
+- Multivalued attribute: Create a record R for each item. R includes a foreign key that links to the record containing the multivalued attribute. The primary key of R is the combination of the foreign key and the item.
+- N-ary relationship type: For each relationship, create a record S. S includes foreign keys of all participating entities. S also includes any attributes of the relationship.
+- Several options for mapping specializations and generalizations
+  - Create a superclass record. Also create record types that contains the relationship attributes for each subclass and a foreign key attribute that links to the superclass record. The primary key for the subclass is the foreign key. (Works for any type of specializations.)
+  - Create a record type for each subclass, which includes all subclass and superclass attributes. (Total disjoint relationships only)
+  - Create a single record type that includes the attributes for each subclass, and an additional attribute for determining which subclass type the record represents. Like a C++ variant. (For any type of specialization)
+  - Like the last option, but instead of using a single attribute to indicate type of subclass, there are N boolean attributes where N = number of subclass types. The boolean attributes are flags that indicate membership of different subclasses.
+- Union type: Create a record type for each union category, which has a foreign key linking to the superclass.
