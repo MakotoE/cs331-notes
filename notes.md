@@ -196,3 +196,17 @@
   - Create a single record type that includes the attributes for each subclass, and an additional attribute for determining which subclass type the record represents. Like a C++ variant. (For any type of specialization)
   - Like the last option, but instead of using a single attribute to indicate type of subclass, there are N boolean attributes where N = number of subclass types. The boolean attributes are flags that indicate membership of different subclasses.
 - Union type: Create a record type for each union category, which has a foreign key linking to the superclass.
+
+# SQL syntax
+- `CREATE DATABASE` and `CREATE SCHEMA` are exactly the same
+- `CREATE TABLE` example
+  ```mysql
+  CREATE TABLE orders (
+      order_id int NOT NULL,
+      user_id int,
+      PRIMARY KEY (order_id),
+      FOREIGN KEY (user_id) REFERENCES users(user_id)
+  );
+  ```
+- `CREATE VIEW view_name AS SELECT * FROM orders;`
+  - A view is like a virtual table or a saved query.
