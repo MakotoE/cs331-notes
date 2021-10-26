@@ -143,6 +143,9 @@
 - Double rectangle = Weak entity (Cannot be identified by its attributes alone)
 - Oval = Attribute
 - Double oval = Multivalued attribute
+- Dotted oval = Derived attribute (Value depends on other attributes)
+- Underline = Primary key
+- Dotted underline = Partial key
 - Diamond = Relationship (Connects two strong entities)
 - Double diamond = Identifying relationship (Connects a weak entity)
 - Line = Partial participation (Not all entities are involved in the relationship)
@@ -196,6 +199,12 @@
   - Create a single record type that includes the attributes for each subclass, and an additional attribute for determining which subclass type the record represents. Like a C++ variant. (For any type of specialization)
   - Like the last option, but instead of using a single attribute to indicate type of subclass, there are N boolean attributes where N = number of subclass types. The boolean attributes are flags that indicate membership of different subclasses.
 - Union type: Create a record type for each union category, which has a foreign key linking to the superclass.
+- Steps for mapping models
+  1. Create tables for the entities
+  2. Create tables for the weak entities
+  3. Create tables for the relationships
+  4. Identify all primary keys
+  5. Link the foreign keys
 
 # SQL syntax
 - `CREATE DATABASE` and `CREATE SCHEMA` are exactly the same
