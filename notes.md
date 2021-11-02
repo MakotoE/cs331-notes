@@ -206,7 +206,7 @@
   4. Identify all primary keys
   5. Link the foreign keys
 
-# SQL syntax
+# SQL
 - `CREATE DATABASE` and `CREATE SCHEMA` are exactly the same
 - `CREATE TABLE` example
   ```mysql
@@ -219,3 +219,17 @@
   ```
 - `CREATE VIEW view_name AS SELECT * FROM orders;`
   - A view is like a virtual table or a saved query.
+- `SELECT DISTINCT` retrieves unique tuples of the selected columns
+- `UNION`, `EXCEPT`, and `INTERSECT` are used for set operations
+
+# Relational algebra
+- SELECT
+  - `SELECT *`
+- PROJECT
+  - Chooses columns to view
+  - `SELECT ...`
+- RENAME
+  - `AS`
+- CARTESIAN PRODUCT
+  - Combines the rows of two tables
+  - `SELECT * FROM table1, table2 WHERE table1.pk = table2.fk`
