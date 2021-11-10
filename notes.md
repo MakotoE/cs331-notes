@@ -209,7 +209,7 @@
 # SQL
 - `CREATE DATABASE` and `CREATE SCHEMA` are exactly the same
 - `CREATE TABLE` example
-  ```mysql
+  ```
   CREATE TABLE orders (
       order_id int NOT NULL,
       user_id int,
@@ -225,11 +225,75 @@
 # Relational algebra
 - SELECT
   - `SELECT *`
+  - Symbol: σ
+  - `WHERE` is written as a subscript after the symbol
 - PROJECT
-  - Chooses columns to view
+  - Chooses columns to view (vertical selection)
   - `SELECT ...`
+  - Symbol: π
 - RENAME
   - `AS`
+  - Symbol: ρ
 - CARTESIAN PRODUCT
   - Combines the rows of two tables
   - `SELECT * FROM table1, table2 WHERE table1.pk = table2.fk`
+  - Symbol: ×
+
+# Advanced SQL
+- Don't do `= NULL`, instead use `IS NULL` or `IS NOT NULL`.
+- Nested queries
+  - Queries can be nested inside the `WHERE` clause
+  ```
+  SELECT Pnumber
+  FROM project
+  WHERE Pnumber IN (
+    SELECT Pnumber
+    FROM project, department, employee
+    WHERE Dnum=Dnumber
+  );
+  ```
+  - `ANY()` and `SOME()` can be used to compare a value to multiple values
+  ```
+  SELECT Lname
+  FROM employee
+  WHERE Salary > ALL(
+    SELECT Salary
+    FROM employee
+    WHERE Dno=5
+  );
+  ```
+  - `ALL()` and `SOME()` are used to check boolean values. `ALL()` returns true if all elements are true, and `SOME()` returns true if at least one element is true.
+  - `EXISTS()` returns true if a nested query is not empty
+  ```
+  EXISTS(SELECT * FROM dependent WHERE Ssn='0000000000')
+  ```
+  - `UNIQUE()` returns true if there are no duplicate records
+- Aggregation
+  - `COUNT`, `SUM`, `MAX`, `MIN`, and `AVG`
+- Grouping
+  - `GROUP BY` groups rows that have the same values into summary rows.
+  - Used with aggregate functions to find stats about the dataset.
+  ```
+  SELECT COUNT(CustomerID), Country
+  FROM Customers
+  GROUP BY Country;
+  ```
+  - `HAVING` filters grouped results, while `WHERE` filters records before grouping.
+  - `WITH` creates a temporary table
+    - `WITH RECURSIVE` is used for recursive relationships
+  - `CASE` is like a swithc statement
+
+# Join
+- `INNER JOIN`: Returns records that match in both tables (intersection)
+  - Denoted with `⋈`
+- Equi-join joins with equality comparisons only
+- `NATURAL JOIN` is similar to `INNER` or `LEFT JOIN` except the tables are implicitly joined by columns of similar names
+- `LEFT OUTER JOIN` and `RIGHT OUTER JOIN`: Returns all records of one table, and columns of the other tables are null`d.
+- Full outer join does not exist in MySQL but can be emulated
+  ```
+  SELECT * FROM t1
+  LEFT JOIN t2 ON t1.id = t2.id
+  UNION
+  SELECT * FROM t1
+  RIGHT JOIN t2 ON t1.id = t2.id
+  ```
