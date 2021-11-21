@@ -297,3 +297,24 @@
   SELECT * FROM t1
   RIGHT JOIN t2 ON t1.id = t2.id
   ```
+
+# Triggers
+- A trigger can be set to activate before or after certain operations (insert, update, delete)
+- The `OLD` and `NEW` records represent the previous and updated records
+- Use `DELIMITER` to change the delimiter so that semi-colons can be used in the inner statement
+
+```
+DELIMITER //
+CREATE TRIGGER upd_salary  BEFORE UPDATE ON employee
+FOR EACH ROW
+BEGIN
+  IF New.salary < 0 THEN SET NEW.salary = 0;
+    ELSE IF NEW.salary > 1000000 THEN SET NEW.salary = 100000;
+    END IF;
+  END IF;
+END; //
+DELIMITER ;
+```
+
+- Triggers can be deleted with `DROP TRIGGER`
+- Current triggers can be listed with `SHOW TRIGGERS`
