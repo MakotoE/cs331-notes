@@ -318,3 +318,59 @@ DELIMITER ;
 
 - Triggers can be deleted with `DROP TRIGGER`
 - Current triggers can be listed with `SHOW TRIGGERS`
+
+# NOSQL
+- Big data
+  - High volume
+  - High velocity: Time-sensitive data processing
+  - Variety: Unstructured data
+  - Veracity: Quality of data
+- NOSQL databases can be sharded for better availability
+- NOSQL has looser ACID properties
+- CAP theorem
+  - A theorem that states that a distributed data store can only provide two of the following three properties
+    - Consistency
+      - Every read receives the most recent write or an error
+    - Availability
+      - Every request receives a non-error response
+    - Partition tolerance
+      - The system continues to operate despite local failures
+  - Examples CAP theorem applied to databases
+    - Consistent and available: MySQL
+    - Available and partition tolerant: Cassandra
+    - Consistent and partition-tolerant: MongoDB
+- NOSQL types
+  - Document-oriented
+    - Data is stored in documents that have a structure described in metadata
+    - MongoDB
+  - Key-value
+    - Values are mapped to keys
+    - Redis
+  - Column family
+    - Has tables and rows like a relational database but the columns can vary from row to row
+    - Cassandra
+  - Graph database
+    - Objects are linked through relationships
+
+# MongoDB
+- Features
+  - Replication for high availability
+  - Sharding for scalability
+- Data hierarchy: Database > Collection > Document > Field
+- A collection is like an SQL table, and a document is like an SQL record
+- Every document contains an `_id` field that acts like a primary key
+- Documents in a database may have different data structures
+- CRUD operations
+  - Create: `insertOne()`, `insertMany()`
+  - Read: `find()`
+    - Aggregation: `count()`, `aggregate()`
+  - Update: `updateOne()`, `updpateMany()`, `replaceOne()`
+  - Delete: `deleteOne()`, `deleteMany()`
+
+# Clustered vs non-clustered index
+- A clustered index is a key that acts as the primary key
+  - Stored in the same location as the data
+- A non-clustered index is a key but is not the primary key
+  - Stored in a separate location than the data
+  - In SQL, a non-clustered index is created with `CREATE INDEX`
+  - In MongoDB, it is created with `createIndex()`
